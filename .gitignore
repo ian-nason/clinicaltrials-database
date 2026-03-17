@@ -4,3 +4,5 @@ aact_data/
 aact_export.zip
 __pycache__/
 *.pyc
+data/
+logs/
