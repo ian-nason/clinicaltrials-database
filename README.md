@@ -9,7 +9,7 @@ Every registered clinical trial in one database: protocols, conditions, interven
 ### With datapond
 
 ```bash
-pip install datapond
+uv pip install datapond
 ```
 
 ```python
