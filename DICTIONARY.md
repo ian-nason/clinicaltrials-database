@@ -787,18 +787,6 @@ Rows: 335
 | reference_id | BIGINT | 0.0% | 396962279 |  |
 | id | BIGINT | 0.0% | 130470 | Table primary key (auto-increment) |
 
-## search_results
-
-| Column | Type | Nulls | Example | Join |
-|--------|------|-------|---------|------|
-| id | VARCHAR | nan% |  | Table primary key (auto-increment) |
-| nct_id | VARCHAR | nan% |  | Primary trial identifier, joins across all AACT tables |
-| name | VARCHAR | nan% |  |  |
-| created_at | VARCHAR | nan% |  |  |
-| updated_at | VARCHAR | nan% |  |  |
-| grouping | VARCHAR | nan% |  |  |
-| study_search_id | VARCHAR | nan% |  |  |
-
 ## search_term_results
 
 Source file: `search_term_results.txt`
@@ -892,26 +880,26 @@ Rows: 592,206
 | study_type | VARCHAR | 0.2% | OBSERVATIONAL |  |
 | target_duration | VARCHAR | 97.1% | 1 Day |  |
 | primary_completion_date | DATE | 3.7% | 2019-09-01 |  |
-| primary_completion_date_type | DATE | 100.0% |  |  |
+| primary_completion_date_type | VARCHAR | 3.7% | ESTIMATED |  |
 | primary_completion_month_year | VARCHAR | 3.7% | 2019-09-01 |  |
 | completion_date | DATE | 2.8% | 2019-09-01 |  |
-| completion_date_type | DATE | 100.0% |  |  |
+| completion_date_type | VARCHAR | 4.0% | ESTIMATED |  |
 | completion_month_year | VARCHAR | 2.8% | 2019-09-01 |  |
 | verification_date | DATE | 0.2% | 2023-03-31 |  |
 | verification_month_year | VARCHAR | 0.2% | 2023-03 |  |
 | start_date | DATE | 0.9% | 2018-09-01 |  |
-| start_date_type | DATE | 100.0% |  |  |
+| start_date_type | VARCHAR | 31.5% | ESTIMATED |  |
 | start_month_year | VARCHAR | 0.9% | 2018-09-01 |  |
-| last_update_posted_date_type | DATE | 100.0% |  |  |
+| last_update_posted_date_type | VARCHAR | 0.0% | ACTUAL |  |
 | last_update_posted_date | DATE | 0.0% | 2024-12-10 |  |
 | last_update_submitted_qc_date | DATE | 0.0% | 2024-12-05 |  |
-| disposition_first_posted_date_type | DATE | 100.0% |  |  |
+| disposition_first_posted_date_type | VARCHAR | 98.4% | ESTIMATED |  |
 | disposition_first_posted_date | DATE | 98.4% | 2013-01-29 |  |
 | disposition_first_submitted_qc_date | DATE | 98.6% | 2013-01-25 |  |
-| results_first_posted_date_type | DATE | 100.0% |  |  |
+| results_first_posted_date_type | VARCHAR | 86.7% | ACTUAL |  |
 | results_first_posted_date | DATE | 86.7% | 2024-11-04 |  |
 | results_first_submitted_qc_date | DATE | 86.7% | 2024-10-30 |  |
-| study_first_posted_date_type | DATE | 100.0% |  |  |
+| study_first_posted_date_type | VARCHAR | 0.0% | ACTUAL |  |
 | study_first_posted_date | DATE | 0.0% | 2018-08-13 |  |
 | study_first_submitted_qc_date | DATE | 0.0% | 2018-08-09 |  |
 | last_update_submitted_date | DATE | 0.0% | 2024-12-05 |  |

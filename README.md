@@ -73,12 +73,19 @@ See [DICTIONARY.md](DICTIONARY.md) for the full data dictionary with column type
 
 ## Example queries
 
+> **Value conventions:** categorical columns use AACT's UPPER_SNAKE values —
+> `overall_status = 'COMPLETED'` (not `'Completed'`), `phase = 'PHASE3'`,
+> `intervention_type = 'DRUG'`. Exceptions exist (`sponsors.lead_or_collaborator`
+> is lowercase `'lead'`); check `_columns.example_value` when in doubt.
+> Anticipated vs actual dates: every major date has a companion
+> `*_date_type` column holding `ACTUAL` or `ESTIMATED`.
+
 ### Trials by phase
 
 ```sql
 SELECT phase, COUNT(*) as trials
 FROM studies
-WHERE overall_status = 'Completed'
+WHERE overall_status = 'COMPLETED'
 GROUP BY phase
 ORDER BY trials DESC;
 ```
@@ -106,11 +113,16 @@ LIMIT 20;
 
 ### Trials with results by year
 
+Results are posted for only ~24% of completed interventional trials — use
+`calculated_values.were_results_reported` as the flag (there is no
+`has_results` column on `studies`).
+
 ```sql
-SELECT EXTRACT(YEAR FROM completion_date) as year, COUNT(*) as trials
-FROM studies
-WHERE has_results = true
-  AND completion_date IS NOT NULL
+SELECT EXTRACT(YEAR FROM s.completion_date) as year, COUNT(*) as trials
+FROM studies s
+JOIN calculated_values cv ON s.nct_id = cv.nct_id
+WHERE cv.were_results_reported = true
+  AND s.completion_date IS NOT NULL
 GROUP BY year
 ORDER BY year;
 ```
@@ -122,10 +134,10 @@ SELECT s.brief_title, i.name as intervention, sp.name as sponsor
 FROM studies s
 JOIN interventions i ON s.nct_id = i.nct_id
 JOIN sponsors sp ON s.nct_id = sp.nct_id
-WHERE s.phase = 'Phase 3'
-  AND i.intervention_type = 'Drug'
+WHERE s.phase = 'PHASE3'
+  AND i.intervention_type = 'DRUG'
   AND sp.lead_or_collaborator = 'lead'
-  AND s.overall_status = 'Recruiting'
+  AND s.overall_status = 'RECRUITING'
 LIMIT 20;
 ```
 

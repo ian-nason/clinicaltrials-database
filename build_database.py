@@ -116,11 +116,12 @@ JOIN_HINTS = {
     "document_id": "Joins to documents.id",
 }
 
-# Columns that look like dates based on name patterns
+# Columns that look like dates based on name patterns.
+# NOTE: *_date_type columns hold the strings ACTUAL/ESTIMATED, not dates —
+# casting them to DATE silently NULLs every value (July 2026 audit finding).
 DATE_PATTERNS = [
     r"_date$",
-    r"_date_type$",
-    r"date_",
+    r"date_(?!type)",
     r"^start_date$",
     r"^completion_date$",
     r"^verification_date$",
@@ -281,6 +282,10 @@ def cast_date_columns(con, table_name):
         if dtype != "VARCHAR":
             continue
 
+        # *_date_type columns hold ACTUAL/ESTIMATED strings, not dates;
+        # TRY_CAST would silently NULL every value (July 2026 audit).
+        if col_name.lower().endswith("_date_type"):
+            continue
         is_date_col = any(
             re.search(pattern, col_name.lower()) for pattern in DATE_PATTERNS
         )
