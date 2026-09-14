@@ -24,6 +24,19 @@ from pathlib import Path
 import duckdb
 import requests
 
+
+def tune_session(con, db_path, memory_limit: str = "6GB", threads: int = 4) -> None:
+    """Bound DuckDB so a build cannot exhaust the (10 GB) WSL VM.
+
+    Override with DATAPOND_MEMORY_LIMIT / DATAPOND_THREADS. Spills go to
+    <db>.tmp next to the output file.
+    """
+    con.execute(f"SET memory_limit = '{os.environ.get('DATAPOND_MEMORY_LIMIT', memory_limit)}'")
+    con.execute(f"SET threads = {int(os.environ.get('DATAPOND_THREADS', threads))}")
+    con.execute(f"SET temp_directory = '{Path(db_path).resolve()}.tmp'")
+    con.execute("SET preserve_insertion_order = false")
+
+
 DOWNLOAD_PAGE = "https://aact.ctti-clinicaltrials.org/downloads"
 SOURCE_URL = "https://aact.ctti-clinicaltrials.org/"
 LICENSE = "Public domain"
@@ -148,7 +161,21 @@ def find_download_url():
     # The postgres dump has: download="YYYYMMDD_clinical_trials_ctgov.zip" href="URL"
     text = resp.text
 
-    # Best match: look for download attribute containing "export_ctgov"
+    # Sept 2026 page layout: a "snapshot" card lists the file name
+    # (YYYYMMDD_export_ctgov.zip) and a primary "Download File" button whose
+    # href is a site-relative /static/exported_files/daily/<date> link.
+    match = re.search(
+        r'(\d{8})_export_ctgov\.zip.*?href="(/static/exported_files/[^"]+)"',
+        text,
+        re.DOTALL,
+    )
+    if match:
+        from urllib.parse import urljoin
+        url = urljoin(DOWNLOAD_PAGE, match.group(2))
+        print(f"  Found flat file export {match.group(1)}_export_ctgov.zip")
+        return url
+
+    # Pre-2026 layout: download="YYYYMMDD_export_ctgov.zip" href="<spaces URL>"
     match = re.search(
         r'download="[^"]*export_ctgov[^"]*"[^>]*href="'
         r'(https://ctti-aact\.nyc3\.digitaloceanspaces\.com/[a-z0-9]+)',
@@ -563,6 +590,7 @@ def main():
     db_path = args.output
     db_path.unlink(missing_ok=True)
     con = duckdb.connect(str(db_path))
+    tune_session(con, db_path, memory_limit="6GB")
 
     built_tables = set()
     file_map = {}
@@ -587,14 +615,23 @@ def main():
         else:
             print(f"  {table_name:<35s} SKIPPED (empty or error)")
 
-    # Drop any tables that loaded with 0 rows (e.g. search_results)
-    all_tables_check = list(built_tables)
+    # Drop any tables that loaded with 0 rows (e.g. search_results, a
+    # header-only AACT file). Check every table in the database, not just
+    # built_tables: a 0-row load_table() creates the table but returns 0, so
+    # it never enters built_tables and used to survive as a phantom table.
+    all_tables_check = [
+        r[0] for r in con.execute(
+            "SELECT table_name FROM information_schema.tables "
+            "WHERE table_schema = 'main' AND table_type = 'BASE TABLE'"
+        ).fetchall()
+    ]
     for table_name in all_tables_check:
         rc = con.execute(f'SELECT COUNT(*) FROM "{table_name}"').fetchone()[0]
         if rc == 0:
             con.execute(f'DROP TABLE IF EXISTS "{table_name}"')
             built_tables.discard(table_name)
             file_map.pop(table_name, None)
+            print(f"  Dropped empty table {table_name}")
 
     print(f"\n  Loaded {len(built_tables)} tables")
 

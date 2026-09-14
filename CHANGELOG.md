@@ -1,5 +1,19 @@
 # Changelog
 
+## 2026-09-14 — Data refresh (AACT snapshot 2026-09-14)
+
+- Rebuilt from the AACT flat-file export dated 2026-09-14. Total rows
+  58,046,170 → 59,028,978 across 48 tables; `studies` 592,206 → 602,514.
+- AACT moved its download page (`/pipe_files` → `/downloads`, with a
+  site-relative "Download File" link); the builder now finds the export
+  there and still accepts the old layout.
+- Fix: the header-only `search_results` file recreated an empty phantom table
+  (removed by hand in July). The builder now drops every zero-row table, and
+  `validate_database.py` fails if `search_results` exists or if any of the
+  seven `studies.*_date_type` columns is not VARCHAR with ACTUAL/ESTIMATED.
+- DuckDB memory capped at 6 GB with 4 threads (overridable via
+  DATAPOND_MEMORY_LIMIT / DATAPOND_THREADS); `publish_to_hf.py --card-only`.
+
 ## 2026-07-06 — Full refresh + data-quality audit
 
 Rebuilt from the AACT snapshot of 2026-07-04 and repaired after an

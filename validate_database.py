@@ -170,6 +170,46 @@ def main():
             f"{hint_count} columns with hints",
         ) else 1
 
+    # 9b. Audit regression guards (July 2026): the seven studies.*_date_type
+    # columns must survive as VARCHAR with ACTUAL/ESTIMATED values (a TRY_CAST
+    # to DATE used to null them), and the header-only search_results table
+    # must not exist.
+    if "studies" in table_names:
+        date_type_cols = [
+            "start_date_type", "completion_date_type", "primary_completion_date_type",
+            "study_first_submitted_qc_date_type", "results_first_submitted_qc_date_type",
+            "last_update_submitted_qc_date_type", "verification_date_type",
+        ]
+        present = {
+            r[0]: r[1] for r in con.execute(
+                "SELECT column_name, data_type FROM information_schema.columns "
+                "WHERE table_name = 'studies' AND column_name LIKE '%_date_type'"
+            ).fetchall()
+        }
+        bad = []
+        for col in present:
+            dtype = present[col]
+            vals = {
+                r[0] for r in con.execute(
+                    f'SELECT DISTINCT "{col}" FROM studies WHERE "{col}" IS NOT NULL'
+                ).fetchall()
+            }
+            if dtype != "VARCHAR" or not vals or not vals <= {"ACTUAL", "ESTIMATED"}:
+                bad.append(f"{col}:{dtype}:{sorted(vals)[:3]}")
+        passed = len(present) >= 3 and not bad
+        failures += 0 if run_check(
+            "studies.*_date_type columns are VARCHAR with ACTUAL/ESTIMATED", passed,
+            f"{len(present)} columns" + (f"; bad: {', '.join(bad)}" if bad else ""),
+        ) else 1
+
+    passed = "search_results" not in table_names
+    if passed and "_metadata" in table_names:
+        n = con.execute(
+            "SELECT COUNT(*) FROM _metadata WHERE table_name = 'search_results'"
+        ).fetchone()[0]
+        passed = n == 0
+    failures += 0 if run_check("no phantom search_results table", passed) else 1
+
     # 10. Total row count
     total_rows = con.execute(
         "SELECT SUM(row_count) FROM _metadata"
