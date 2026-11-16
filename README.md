@@ -1,51 +1,57 @@
 # ClinicalTrials.gov Database
 
-A clean, queryable DuckDB database built from the [AACT](https://aact.ctti-clinicaltrials.org/) (Aggregate Analysis of ClinicalTrials.gov) pipe-delimited flat files.
+Explore registered studies from ClinicalTrials.gov through the September 14, 2026 Aggregate Analysis of ClinicalTrials.gov (AACT) snapshot: study designs, conditions, interventions, sponsors, locations, eligibility and reported results. Start with `studies`, which contains 602,514 study records identified by `nct_id`, the ClinicalTrials.gov study identifier (NCT ID); related tables can have many rows per study. Use the database to describe registered research and inspect reported outcomes. Registration and results reporting are incomplete, and this is a frozen registry snapshot rather than individual-patient data or a live feed.
 
-Every registered clinical trial in one database: protocols, conditions, interventions, outcomes, sponsors, facilities, eligibility criteria, and results.
+<a id="quick-start"></a>
 
-## Quick start
+## Start querying
 
-### With datapond
+Count study records by their reported status, such as recruiting or completed. These counts describe registered studies, not participants or treatment results.
 
-```bash
-uv pip install datapond
+`overall_status` is the recorded study status; `n` is the number of study records in that status group.
+
+Choose R or Python. Install datapond once: use `install.packages("datapond")` in R, or run `python -m pip install datapond` in a terminal.
+
+### R
+
+```r
+library(datapond)
+con <- dp_connect("clinicaltrials")
+tryCatch({
+  DBI::dbExecute(con, "SET threads=1")
+  DBI::dbExecute(con, "SET memory_limit='128MiB'")
+  DBI::dbExecute(con, "SET max_temp_directory_size='0B'")
+  print(DBI::dbGetQuery(con, "SELECT overall_status, COUNT(*) as n
+FROM studies
+GROUP BY overall_status
+ORDER BY n DESC"))
+}, finally = dp_disconnect(con))
 ```
+
+### Python
 
 ```python
 import datapond
-
 con = datapond.connect('clinicaltrials')
-con.sql("SELECT overall_status, COUNT(*) as n FROM studies GROUP BY 1 ORDER BY 2 DESC").show()
+try:
+    con.execute("SET threads=1")
+    con.execute("SET memory_limit='128MiB'")
+    con.execute("SET max_temp_directory_size='0B'")
+    print(con.execute("""SELECT overall_status, COUNT(*) as n
+FROM studies
+GROUP BY overall_status
+ORDER BY n DESC""").fetchall())
+finally:
+    con.close()
 ```
 
-### With DuckDB directly
+Queries run on your computer and read the byte ranges they need. A small result can still require a large scan. These examples limit DuckDB to one thread and a 128 MiB buffer pool with disk spill disabled; that is not a limit on the entire R or Python process. Larger analyses may need more memory or a local download with enough disk space.
 
-```sql
-INSTALL httpfs;
-LOAD httpfs;
-ATTACH 'https://huggingface.co/datasets/Nason/clinicaltrials-database/resolve/main/clinicaltrials.duckdb' AS ct (READ_ONLY);
+<a id="additional-dataset-notes"></a>
 
-SELECT * FROM ct.studies LIMIT 5;
-```
+<a id="tables"></a>
 
-### Download locally
-
-```python
-import datapond
-datapond.download('clinicaltrials')
-
-con = datapond.connect('clinicaltrials', local=True)
-```
-
-## Source and license
-
-- **Source:** [AACT / CTTI](https://aact.ctti-clinicaltrials.org/) -- daily export of ClinicalTrials.gov
-- **Original data:** [ClinicalTrials.gov](https://clinicaltrials.gov/) (NIH/NLM)
-- **Data license:** Public domain (U.S. government data)
-- **Build code license:** MIT
-
-## Tables
+## Tables and joins
 
 The database contains ~50 tables. Key tables include:
 
@@ -64,12 +70,16 @@ The database contains ~50 tables. Key tables include:
 | `reported_events` | Adverse event summaries |
 | `countries` | Countries where the study has sites |
 | `keywords` | Investigator-provided keywords |
-| `browse_conditions` | NLM-generated MeSH terms for conditions |
+| `browse_conditions` | National Library of Medicine (NLM) Medical Subject Headings (MeSH) terms for conditions |
 | `browse_interventions` | NLM-generated MeSH terms for interventions |
 
 All tables join on `nct_id` (the ClinicalTrials.gov trial identifier).
 
 See [DICTIONARY.md](DICTIONARY.md) for the full data dictionary with column types, null rates, example values, and join hints.
+
+<a id="coverage-fields-and-sources"></a>
+
+See the [data dictionary](https://github.com/ian-nason/clinicaltrials-database/blob/main/DICTIONARY.md) for column definitions.
 
 ## Example queries
 
@@ -127,7 +137,9 @@ GROUP BY year
 ORDER BY year;
 ```
 
-### Drug trials in Phase 3
+### Drug intervention records in recruiting Phase 3 studies
+
+This join returns study-intervention-lead-sponsor combinations. A study can appear more than once; the result is not a distinct-study count.
 
 ```sql
 SELECT s.brief_title, i.name as intervention, sp.name as sponsor
@@ -141,14 +153,67 @@ WHERE s.phase = 'PHASE3'
 LIMIT 20;
 ```
 
-## Build instructions
+<a id="advanced-access-quick-start"></a>
 
-### Requirements
+## Other ways to connect
+
+### With datapond
+
+```bash
+uv pip install datapond
+```
+
+```python
+import datapond
+
+con = datapond.connect('clinicaltrials')
+con.sql("SELECT overall_status, COUNT(*) as n FROM studies GROUP BY 1 ORDER BY 2 DESC").show()
+```
+
+### With DuckDB directly
+
+```sql
+INSTALL httpfs;
+LOAD httpfs;
+ATTACH 'https://huggingface.co/datasets/Nason/clinicaltrials-database/resolve/main/clinicaltrials.duckdb' AS ct (READ_ONLY);
+
+SELECT * FROM ct.studies LIMIT 5;
+```
+
+### Download locally
+
+```python
+import datapond
+datapond.download('clinicaltrials')
+
+con = datapond.connect('clinicaltrials', local=True)
+```
+
+## Sources and maintenance
+
+### Source and license reference
+
+See the [data dictionary](https://github.com/ian-nason/clinicaltrials-database/blob/main/DICTIONARY.md) for column definitions and the [AACT / Clinical Trials Transformation Initiative](https://aact.ctti-clinicaltrials.org/) for the source. License: Public domain.
+
+### Source and license
+
+- **Source:** [AACT / CTTI](https://aact.ctti-clinicaltrials.org/) -- daily export of ClinicalTrials.gov
+- **Original data:** [ClinicalTrials.gov](https://clinicaltrials.gov/) (NIH/NLM)
+- **Data license:** Public domain (U.S. government data)
+- **Build code license:** MIT
+
+### Build source format
+
+The [AACT](https://aact.ctti-clinicaltrials.org/) export supplies pipe-delimited flat files for protocols, conditions, interventions, outcomes, sponsors, facilities, eligibility criteria and results.
+
+### Build instructions
+
+#### Requirements
 
 - Python 3.9+
 - `duckdb` and `requests` packages
 
-### Build from scratch
+#### Build from scratch
 
 ```bash
 python build_database.py
@@ -156,25 +221,25 @@ python build_database.py
 
 This will download the latest AACT flat file export (~2 GB), extract it, load all tables into DuckDB, create metadata and data dictionary tables, and export DICTIONARY.md.
 
-### Build from a pre-downloaded zip
+#### Build from a pre-downloaded zip
 
 ```bash
 python build_database.py --zip 20260316_export_ctgov.zip
 ```
 
-### Build from already-extracted files
+#### Build from already-extracted files
 
 ```bash
 python build_database.py --data-dir ./aact_data
 ```
 
-### Validate
+#### Validate
 
 ```bash
 python validate_database.py
 ```
 
-## Links
+### Links
 
 - **datapond:** [pypi.org/project/datapond](https://pypi.org/project/datapond/)
 - **AACT:** [aact.ctti-clinicaltrials.org](https://aact.ctti-clinicaltrials.org/)
