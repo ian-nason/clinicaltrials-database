@@ -1,0 +1,17 @@
+[
+  {
+    "table": "search_results",
+    "missing": [],
+    "added": [
+      "created_at",
+      "grouping",
+      "id",
+      "name",
+      "nct_id",
+      "study_search_id",
+      "updated_at"
+    ],
+    "empty": true,
+    "column_count": 7
+  }
+]

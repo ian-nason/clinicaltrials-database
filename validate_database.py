@@ -60,7 +60,9 @@ def main():
 
     print(f"Validating {args.db}\n")
 
-    con = duckdb.connect(str(args.db), read_only=True)
+    con = duckdb.connect(str(args.db), read_only=True,
+                         config={'threads': '1', 'memory_limit': '1GiB',
+                                 'max_temp_directory_size': '0B'})
     failures = 0
 
     # 1. Check database opens and has tables
@@ -177,8 +179,8 @@ def main():
     if "studies" in table_names:
         date_type_cols = [
             "start_date_type", "completion_date_type", "primary_completion_date_type",
-            "study_first_submitted_qc_date_type", "results_first_submitted_qc_date_type",
-            "last_update_submitted_qc_date_type", "verification_date_type",
+            "study_first_posted_date_type", "results_first_posted_date_type",
+            "disposition_first_posted_date_type", "last_update_posted_date_type",
         ]
         present = {
             r[0]: r[1] for r in con.execute(
@@ -196,7 +198,7 @@ def main():
             }
             if dtype != "VARCHAR" or not vals or not vals <= {"ACTUAL", "ESTIMATED"}:
                 bad.append(f"{col}:{dtype}:{sorted(vals)[:3]}")
-        passed = len(present) >= 3 and not bad
+        passed = set(date_type_cols) <= set(present) and not bad
         failures += 0 if run_check(
             "studies.*_date_type columns are VARCHAR with ACTUAL/ESTIMATED", passed,
             f"{len(present)} columns" + (f"; bad: {', '.join(bad)}" if bad else ""),

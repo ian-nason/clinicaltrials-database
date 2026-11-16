@@ -1,5 +1,12 @@
 # Changelog
 
+## 2026-11-16 — Strict source-verified refresh
+
+- Published the November 16 AACT snapshot: 611,764 studies and 59,949,300 stored rows across 48 data tables.
+- All 49 archive members strictly parsed; the empty search_results file remains omitted. No malformed records skipped or nonempty coercion losses accepted. Full typed-row hash sums and counts match the source for every table.
+- Changed milestones.count_units (BIGINT) and outcome_analyses.ci_lower_limit_raw (DOUBLE) to VARCHAR to retain 29 otherwise unparseable source values. Every prior field remains present; all other source types are unchanged.
+- Rechecked every metadata row count, field type and null percentage, study identifiers, all seven date-type labels and working joins. Published the source archive, reproducible bounded builder, dictionary and validation evidence.
+
 ## 2026-09-14 — Data refresh (AACT snapshot 2026-09-14)
 
 - Rebuilt from the AACT flat-file export dated 2026-09-14. Total rows

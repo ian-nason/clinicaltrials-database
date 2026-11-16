@@ -1,0 +1,603 @@
+{
+  "status": "passed",
+  "source_snapshot": "2026-11-16",
+  "artifact": {
+    "bytes": 6300119040,
+    "sha256": "c69dab5cd5b18b818714dce6c1227dc2d48bd491c624d0639f8811e057bd9c2b"
+  },
+  "studies": 611764,
+  "rows": 59949300,
+  "tables": [
+    {
+      "table": "baseline_counts",
+      "rows": 243638,
+      "previous_rows": 240449,
+      "columns": 7,
+      "schema": "unchanged",
+      "metadata_and_null_rates": "passed"
+    },
+    {
+      "table": "baseline_measurements",
+      "rows": 3010313,
+      "previous_rows": 2963066,
+      "columns": 22,
+      "schema": "unchanged",
+      "metadata_and_null_rates": "passed"
+    },
+    {
+      "table": "brief_summaries",
+      "rows": 610773,
+      "previous_rows": 601530,
+      "columns": 3,
+      "schema": "unchanged",
+      "metadata_and_null_rates": "passed"
+    },
+    {
+      "table": "browse_conditions",
+      "rows": 4429716,
+      "previous_rows": 4368819,
+      "columns": 5,
+      "schema": "unchanged",
+      "metadata_and_null_rates": "passed"
+    },
+    {
+      "table": "browse_interventions",
+      "rows": 2578978,
+      "previous_rows": 2553067,
+      "columns": 5,
+      "schema": "unchanged",
+      "metadata_and_null_rates": "passed"
+    },
+    {
+      "table": "calculated_values",
+      "rows": 611764,
+      "previous_rows": 602514,
+      "columns": 19,
+      "schema": "unchanged",
+      "metadata_and_null_rates": "passed"
+    },
+    {
+      "table": "central_contacts",
+      "rows": 228050,
+      "previous_rows": 226221,
+      "columns": 8,
+      "schema": "unchanged",
+      "metadata_and_null_rates": "passed"
+    },
+    {
+      "table": "conditions",
+      "rows": 1102470,
+      "previous_rows": 1083005,
+      "columns": 4,
+      "schema": "unchanged",
+      "metadata_and_null_rates": "passed"
+    },
+    {
+      "table": "countries",
+      "rows": 827485,
+      "previous_rows": 816098,
+      "columns": 4,
+      "schema": "unchanged",
+      "metadata_and_null_rates": "passed"
+    },
+    {
+      "table": "design_group_interventions",
+      "rows": 1365520,
+      "previous_rows": 1344197,
+      "columns": 4,
+      "schema": "unchanged",
+      "metadata_and_null_rates": "passed"
+    },
+    {
+      "table": "design_groups",
+      "rows": 1126933,
+      "previous_rows": 1108587,
+      "columns": 5,
+      "schema": "unchanged",
+      "metadata_and_null_rates": "passed"
+    },
+    {
+      "table": "design_outcomes",
+      "rows": 3835719,
+      "previous_rows": 3761914,
+      "columns": 7,
+      "schema": "unchanged",
+      "metadata_and_null_rates": "passed"
+    },
+    {
+      "table": "designs",
+      "rows": 606958,
+      "previous_rows": 597720,
+      "columns": 14,
+      "schema": "unchanged",
+      "metadata_and_null_rates": "passed"
+    },
+    {
+      "table": "detailed_descriptions",
+      "rows": 610773,
+      "previous_rows": 601530,
+      "columns": 3,
+      "schema": "unchanged",
+      "metadata_and_null_rates": "passed"
+    },
+    {
+      "table": "documents",
+      "rows": 10879,
+      "previous_rows": 10838,
+      "columns": 6,
+      "schema": "unchanged",
+      "metadata_and_null_rates": "passed"
+    },
+    {
+      "table": "drop_withdrawals",
+      "rows": 609877,
+      "previous_rows": 602414,
+      "columns": 10,
+      "schema": "unchanged",
+      "metadata_and_null_rates": "passed"
+    },
+    {
+      "table": "eligibilities",
+      "rows": 610773,
+      "previous_rows": 601530,
+      "columns": 14,
+      "schema": "unchanged",
+      "metadata_and_null_rates": "passed"
+    },
+    {
+      "table": "facilities",
+      "rows": 3562767,
+      "previous_rows": 3523526,
+      "columns": 10,
+      "schema": "unchanged",
+      "metadata_and_null_rates": "passed"
+    },
+    {
+      "table": "facility_contacts",
+      "rows": 426291,
+      "previous_rows": 421325,
+      "columns": 8,
+      "schema": "unchanged",
+      "metadata_and_null_rates": "passed"
+    },
+    {
+      "table": "facility_investigators",
+      "rows": 229550,
+      "previous_rows": 226624,
+      "columns": 5,
+      "schema": "unchanged",
+      "metadata_and_null_rates": "passed"
+    },
+    {
+      "table": "id_information",
+      "rows": 808976,
+      "previous_rows": 796767,
+      "columns": 7,
+      "schema": "unchanged",
+      "metadata_and_null_rates": "passed"
+    },
+    {
+      "table": "intervention_other_names",
+      "rows": 491652,
+      "previous_rows": 486506,
+      "columns": 4,
+      "schema": "unchanged",
+      "metadata_and_null_rates": "passed"
+    },
+    {
+      "table": "interventions",
+      "rows": 1035096,
+      "previous_rows": 1019126,
+      "columns": 5,
+      "schema": "unchanged",
+      "metadata_and_null_rates": "passed"
+    },
+    {
+      "table": "ipd_information_types",
+      "rows": 99070,
+      "previous_rows": 96041,
+      "columns": 3,
+      "schema": "unchanged",
+      "metadata_and_null_rates": "passed"
+    },
+    {
+      "table": "keywords",
+      "rows": 1658452,
+      "previous_rows": 1621092,
+      "columns": 4,
+      "schema": "unchanged",
+      "metadata_and_null_rates": "passed"
+    },
+    {
+      "table": "links",
+      "rows": 77438,
+      "previous_rows": 75845,
+      "columns": 4,
+      "schema": "unchanged",
+      "metadata_and_null_rates": "passed"
+    },
+    {
+      "table": "milestones",
+      "rows": 910983,
+      "previous_rows": 898696,
+      "columns": 10,
+      "schema": "reviewed text-field repair",
+      "metadata_and_null_rates": "passed"
+    },
+    {
+      "table": "outcome_analyses",
+      "rows": 330580,
+      "previous_rows": 326441,
+      "columns": 25,
+      "schema": "reviewed text-field repair",
+      "metadata_and_null_rates": "passed"
+    },
+    {
+      "table": "outcome_analysis_groups",
+      "rows": 639703,
+      "previous_rows": 631153,
+      "columns": 5,
+      "schema": "unchanged",
+      "metadata_and_null_rates": "passed"
+    },
+    {
+      "table": "outcome_counts",
+      "rows": 1632111,
+      "previous_rows": 1608622,
+      "columns": 8,
+      "schema": "unchanged",
+      "metadata_and_null_rates": "passed"
+    },
+    {
+      "table": "outcome_measurements",
+      "rows": 5071872,
+      "previous_rows": 4995195,
+      "columns": 21,
+      "schema": "unchanged",
+      "metadata_and_null_rates": "passed"
+    },
+    {
+      "table": "outcomes",
+      "rows": 675682,
+      "previous_rows": 666333,
+      "columns": 13,
+      "schema": "unchanged",
+      "metadata_and_null_rates": "passed"
+    },
+    {
+      "table": "overall_officials",
+      "rows": 538952,
+      "previous_rows": 534026,
+      "columns": 5,
+      "schema": "unchanged",
+      "metadata_and_null_rates": "passed"
+    },
+    {
+      "table": "participant_flows",
+      "rows": 81026,
+      "previous_rows": 80079,
+      "columns": 5,
+      "schema": "unchanged",
+      "metadata_and_null_rates": "passed"
+    },
+    {
+      "table": "pending_results",
+      "rows": 34116,
+      "previous_rows": 33534,
+      "columns": 5,
+      "schema": "unchanged",
+      "metadata_and_null_rates": "passed"
+    },
+    {
+      "table": "provided_documents",
+      "rows": 88167,
+      "previous_rows": 85636,
+      "columns": 8,
+      "schema": "unchanged",
+      "metadata_and_null_rates": "passed"
+    },
+    {
+      "table": "reported_event_totals",
+      "rows": 612225,
+      "previous_rows": 604152,
+      "columns": 9,
+      "schema": "unchanged",
+      "metadata_and_null_rates": "passed"
+    },
+    {
+      "table": "reported_events",
+      "rows": 12253285,
+      "previous_rows": 12034973,
+      "columns": 17,
+      "schema": "unchanged",
+      "metadata_and_null_rates": "passed"
+    },
+    {
+      "table": "responsible_parties",
+      "rows": 593336,
+      "previous_rows": 584077,
+      "columns": 8,
+      "schema": "unchanged",
+      "metadata_and_null_rates": "passed"
+    },
+    {
+      "table": "result_agreements",
+      "rows": 81026,
+      "previous_rows": 80079,
+      "columns": 7,
+      "schema": "unchanged",
+      "metadata_and_null_rates": "passed"
+    },
+    {
+      "table": "result_contacts",
+      "rows": 81026,
+      "previous_rows": 80079,
+      "columns": 7,
+      "schema": "unchanged",
+      "metadata_and_null_rates": "passed"
+    },
+    {
+      "table": "result_groups",
+      "rows": 2249303,
+      "previous_rows": 2217791,
+      "columns": 7,
+      "schema": "unchanged",
+      "metadata_and_null_rates": "passed"
+    },
+    {
+      "table": "retractions",
+      "rows": 335,
+      "previous_rows": 335,
+      "columns": 5,
+      "schema": "unchanged",
+      "metadata_and_null_rates": "passed"
+    },
+    {
+      "table": "search_term_results",
+      "rows": 520437,
+      "previous_rows": 513966,
+      "columns": 5,
+      "schema": "unchanged",
+      "metadata_and_null_rates": "passed"
+    },
+    {
+      "table": "search_terms",
+      "rows": 186,
+      "previous_rows": 186,
+      "columns": 5,
+      "schema": "unchanged",
+      "metadata_and_null_rates": "passed"
+    },
+    {
+      "table": "sponsors",
+      "rows": 974504,
+      "previous_rows": 960579,
+      "columns": 5,
+      "schema": "unchanged",
+      "metadata_and_null_rates": "passed"
+    },
+    {
+      "table": "studies",
+      "rows": 611764,
+      "previous_rows": 602514,
+      "columns": 71,
+      "schema": "unchanged",
+      "metadata_and_null_rates": "passed"
+    },
+    {
+      "table": "study_references",
+      "rows": 1158770,
+      "previous_rows": 1140181,
+      "columns": 5,
+      "schema": "unchanged",
+      "metadata_and_null_rates": "passed"
+    }
+  ],
+  "date_types": {
+    "completion_date_type": [
+      [
+        "ACTUAL",
+        361242
+      ],
+      [
+        "ESTIMATED",
+        227095
+      ],
+      [
+        null,
+        23427
+      ]
+    ],
+    "disposition_first_posted_date_type": [
+      [
+        "ACTUAL",
+        4648
+      ],
+      [
+        "ESTIMATED",
+        5202
+      ],
+      [
+        null,
+        601914
+      ]
+    ],
+    "last_update_posted_date_type": [
+      [
+        "ACTUAL",
+        482117
+      ],
+      [
+        "ESTIMATED",
+        129647
+      ]
+    ],
+    "primary_completion_date_type": [
+      [
+        "ACTUAL",
+        376443
+      ],
+      [
+        "ESTIMATED",
+        213368
+      ],
+      [
+        null,
+        21953
+      ]
+    ],
+    "results_first_posted_date_type": [
+      [
+        "ACTUAL",
+        56806
+      ],
+      [
+        "ESTIMATED",
+        24220
+      ],
+      [
+        null,
+        530738
+      ]
+    ],
+    "start_date_type": [
+      [
+        "ACTUAL",
+        362155
+      ],
+      [
+        "ESTIMATED",
+        63488
+      ],
+      [
+        null,
+        186121
+      ]
+    ],
+    "study_first_posted_date_type": [
+      [
+        "ACTUAL",
+        375421
+      ],
+      [
+        "ESTIMATED",
+        236343
+      ]
+    ]
+  },
+  "completed_interventional_results": {
+    "studies": 262185,
+    "with_reported_results": 63166,
+    "percent": 24.1
+  },
+  "joined_records": {
+    "conditions": 1102470,
+    "sponsors": 974504,
+    "interventions": 1035096
+  },
+  "source_members": 49,
+  "empty_source_members": [
+    "search_results.txt"
+  ],
+  "source_audit": "All source members strictly parsed; counts and full typed-row hash sums matched; no nonempty coercion losses.",
+  "type_repairs": [
+    {
+      "table": "milestones",
+      "column": "count_units",
+      "previous_type": "BIGINT",
+      "nonempty_values_not_castable": 15,
+      "values": [
+        [
+          "2,506",
+          2
+        ],
+        [
+          "306,825",
+          2
+        ],
+        [
+          "327,462",
+          2
+        ],
+        [
+          "33,938",
+          2
+        ],
+        [
+          "522,370",
+          2
+        ],
+        [
+          "NA",
+          5
+        ]
+      ],
+      "raw_values_preserved": true
+    },
+    {
+      "table": "outcome_analyses",
+      "column": "ci_lower_limit_raw",
+      "previous_type": "DOUBLE",
+      "nonempty_values_not_castable": 14,
+      "values": [
+        [
+          "- 0.36",
+          1
+        ],
+        [
+          "- 0.6",
+          1
+        ],
+        [
+          "- 0.74",
+          1
+        ],
+        [
+          "- 0.8077",
+          1
+        ],
+        [
+          "- 1.92",
+          1
+        ],
+        [
+          "- 2.10",
+          1
+        ],
+        [
+          "- 4.1",
+          1
+        ],
+        [
+          "- 4.84",
+          1
+        ],
+        [
+          "- 50.83",
+          1
+        ],
+        [
+          "- 93.81",
+          1
+        ],
+        [
+          "-0. 54",
+          1
+        ],
+        [
+          "-1,044",
+          1
+        ],
+        [
+          "-22,187.90",
+          1
+        ],
+        [
+          "9,293",
+          1
+        ]
+      ],
+      "raw_values_preserved": true
+    }
+  ]
+}

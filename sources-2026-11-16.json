@@ -1,0 +1,561 @@
+{
+  "source_snapshot": "2026-11-16",
+  "source_page": "https://aact.ctti-clinicaltrials.org/snapshots",
+  "archive": {
+    "filename": "20261116_export_ctgov.zip",
+    "bytes": 2570738325,
+    "sha256": "a1629d7bef1da96068ada6174905b92cff28cc1b7bc54ffa095c495f678a1033"
+  },
+  "baseline": {
+    "revision": "8404352bf2ee1f4091abc222c130595ed04f9664",
+    "sha256": "028741c0240e772d6116c27bb426b9b4d00bd24f833e9f7670339ba7d46ab722"
+  },
+  "source_member_count": 49,
+  "tables": [
+    {
+      "table": "baseline_counts",
+      "member": "baseline_counts.txt",
+      "rows": 243638,
+      "columns": 7,
+      "new_fields": [],
+      "coercion_losses": {},
+      "source_comparison": "Strict parse count and full typed-row hash sum match",
+      "stored": true
+    },
+    {
+      "table": "baseline_measurements",
+      "member": "baseline_measurements.txt",
+      "rows": 3010313,
+      "columns": 22,
+      "new_fields": [],
+      "coercion_losses": {},
+      "source_comparison": "Strict parse count and full typed-row hash sum match",
+      "stored": true
+    },
+    {
+      "table": "brief_summaries",
+      "member": "brief_summaries.txt",
+      "rows": 610773,
+      "columns": 3,
+      "new_fields": [],
+      "coercion_losses": {},
+      "source_comparison": "Strict parse count and full typed-row hash sum match",
+      "stored": true
+    },
+    {
+      "table": "browse_conditions",
+      "member": "browse_conditions.txt",
+      "rows": 4429716,
+      "columns": 5,
+      "new_fields": [],
+      "coercion_losses": {},
+      "source_comparison": "Strict parse count and full typed-row hash sum match",
+      "stored": true
+    },
+    {
+      "table": "browse_interventions",
+      "member": "browse_interventions.txt",
+      "rows": 2578978,
+      "columns": 5,
+      "new_fields": [],
+      "coercion_losses": {},
+      "source_comparison": "Strict parse count and full typed-row hash sum match",
+      "stored": true
+    },
+    {
+      "table": "calculated_values",
+      "member": "calculated_values.txt",
+      "rows": 611764,
+      "columns": 19,
+      "new_fields": [],
+      "coercion_losses": {},
+      "source_comparison": "Strict parse count and full typed-row hash sum match",
+      "stored": true
+    },
+    {
+      "table": "central_contacts",
+      "member": "central_contacts.txt",
+      "rows": 228050,
+      "columns": 8,
+      "new_fields": [],
+      "coercion_losses": {},
+      "source_comparison": "Strict parse count and full typed-row hash sum match",
+      "stored": true
+    },
+    {
+      "table": "conditions",
+      "member": "conditions.txt",
+      "rows": 1102470,
+      "columns": 4,
+      "new_fields": [],
+      "coercion_losses": {},
+      "source_comparison": "Strict parse count and full typed-row hash sum match",
+      "stored": true
+    },
+    {
+      "table": "countries",
+      "member": "countries.txt",
+      "rows": 827485,
+      "columns": 4,
+      "new_fields": [],
+      "coercion_losses": {},
+      "source_comparison": "Strict parse count and full typed-row hash sum match",
+      "stored": true
+    },
+    {
+      "table": "design_group_interventions",
+      "member": "design_group_interventions.txt",
+      "rows": 1365520,
+      "columns": 4,
+      "new_fields": [],
+      "coercion_losses": {},
+      "source_comparison": "Strict parse count and full typed-row hash sum match",
+      "stored": true
+    },
+    {
+      "table": "design_groups",
+      "member": "design_groups.txt",
+      "rows": 1126933,
+      "columns": 5,
+      "new_fields": [],
+      "coercion_losses": {},
+      "source_comparison": "Strict parse count and full typed-row hash sum match",
+      "stored": true
+    },
+    {
+      "table": "design_outcomes",
+      "member": "design_outcomes.txt",
+      "rows": 3835719,
+      "columns": 7,
+      "new_fields": [],
+      "coercion_losses": {},
+      "source_comparison": "Strict parse count and full typed-row hash sum match",
+      "stored": true
+    },
+    {
+      "table": "designs",
+      "member": "designs.txt",
+      "rows": 606958,
+      "columns": 14,
+      "new_fields": [],
+      "coercion_losses": {},
+      "source_comparison": "Strict parse count and full typed-row hash sum match",
+      "stored": true
+    },
+    {
+      "table": "detailed_descriptions",
+      "member": "detailed_descriptions.txt",
+      "rows": 610773,
+      "columns": 3,
+      "new_fields": [],
+      "coercion_losses": {},
+      "source_comparison": "Strict parse count and full typed-row hash sum match",
+      "stored": true
+    },
+    {
+      "table": "documents",
+      "member": "documents.txt",
+      "rows": 10879,
+      "columns": 6,
+      "new_fields": [],
+      "coercion_losses": {},
+      "source_comparison": "Strict parse count and full typed-row hash sum match",
+      "stored": true
+    },
+    {
+      "table": "drop_withdrawals",
+      "member": "drop_withdrawals.txt",
+      "rows": 609877,
+      "columns": 10,
+      "new_fields": [],
+      "coercion_losses": {},
+      "source_comparison": "Strict parse count and full typed-row hash sum match",
+      "stored": true
+    },
+    {
+      "table": "eligibilities",
+      "member": "eligibilities.txt",
+      "rows": 610773,
+      "columns": 14,
+      "new_fields": [],
+      "coercion_losses": {},
+      "source_comparison": "Strict parse count and full typed-row hash sum match",
+      "stored": true
+    },
+    {
+      "table": "facilities",
+      "member": "facilities.txt",
+      "rows": 3562767,
+      "columns": 10,
+      "new_fields": [],
+      "coercion_losses": {},
+      "source_comparison": "Strict parse count and full typed-row hash sum match",
+      "stored": true
+    },
+    {
+      "table": "facility_contacts",
+      "member": "facility_contacts.txt",
+      "rows": 426291,
+      "columns": 8,
+      "new_fields": [],
+      "coercion_losses": {},
+      "source_comparison": "Strict parse count and full typed-row hash sum match",
+      "stored": true
+    },
+    {
+      "table": "facility_investigators",
+      "member": "facility_investigators.txt",
+      "rows": 229550,
+      "columns": 5,
+      "new_fields": [],
+      "coercion_losses": {},
+      "source_comparison": "Strict parse count and full typed-row hash sum match",
+      "stored": true
+    },
+    {
+      "table": "id_information",
+      "member": "id_information.txt",
+      "rows": 808976,
+      "columns": 7,
+      "new_fields": [],
+      "coercion_losses": {},
+      "source_comparison": "Strict parse count and full typed-row hash sum match",
+      "stored": true
+    },
+    {
+      "table": "intervention_other_names",
+      "member": "intervention_other_names.txt",
+      "rows": 491652,
+      "columns": 4,
+      "new_fields": [],
+      "coercion_losses": {},
+      "source_comparison": "Strict parse count and full typed-row hash sum match",
+      "stored": true
+    },
+    {
+      "table": "interventions",
+      "member": "interventions.txt",
+      "rows": 1035096,
+      "columns": 5,
+      "new_fields": [],
+      "coercion_losses": {},
+      "source_comparison": "Strict parse count and full typed-row hash sum match",
+      "stored": true
+    },
+    {
+      "table": "ipd_information_types",
+      "member": "ipd_information_types.txt",
+      "rows": 99070,
+      "columns": 3,
+      "new_fields": [],
+      "coercion_losses": {},
+      "source_comparison": "Strict parse count and full typed-row hash sum match",
+      "stored": true
+    },
+    {
+      "table": "keywords",
+      "member": "keywords.txt",
+      "rows": 1658452,
+      "columns": 4,
+      "new_fields": [],
+      "coercion_losses": {},
+      "source_comparison": "Strict parse count and full typed-row hash sum match",
+      "stored": true
+    },
+    {
+      "table": "links",
+      "member": "links.txt",
+      "rows": 77438,
+      "columns": 4,
+      "new_fields": [],
+      "coercion_losses": {},
+      "source_comparison": "Strict parse count and full typed-row hash sum match",
+      "stored": true
+    },
+    {
+      "table": "milestones",
+      "member": "milestones.txt",
+      "rows": 910983,
+      "columns": 10,
+      "new_fields": [],
+      "coercion_losses": {},
+      "source_comparison": "Strict parse count and full typed-row hash sum match",
+      "typed_row_hash_sum": "8403864908156725642860202",
+      "stored": true
+    },
+    {
+      "table": "outcome_analyses",
+      "member": "outcome_analyses.txt",
+      "rows": 330580,
+      "columns": 25,
+      "new_fields": [],
+      "coercion_losses": {},
+      "source_comparison": "Strict parse count and full typed-row hash sum match",
+      "typed_row_hash_sum": "3045176372293346410736554",
+      "stored": true
+    },
+    {
+      "table": "outcome_analysis_groups",
+      "member": "outcome_analysis_groups.txt",
+      "rows": 639703,
+      "columns": 5,
+      "new_fields": [],
+      "coercion_losses": {},
+      "source_comparison": "Strict parse count and full typed-row hash sum match",
+      "typed_row_hash_sum": "5900781072216719980374350",
+      "stored": true
+    },
+    {
+      "table": "outcome_counts",
+      "member": "outcome_counts.txt",
+      "rows": 1632111,
+      "columns": 8,
+      "new_fields": [],
+      "coercion_losses": {},
+      "source_comparison": "Strict parse count and full typed-row hash sum match",
+      "typed_row_hash_sum": "15042221149593683238565887",
+      "stored": true
+    },
+    {
+      "table": "outcome_measurements",
+      "member": "outcome_measurements.txt",
+      "rows": 5071872,
+      "columns": 21,
+      "new_fields": [],
+      "coercion_losses": {},
+      "source_comparison": "Strict parse count and full typed-row hash sum match",
+      "typed_row_hash_sum": "46793988108724698187298980",
+      "stored": true
+    },
+    {
+      "table": "outcomes",
+      "member": "outcomes.txt",
+      "rows": 675682,
+      "columns": 13,
+      "new_fields": [],
+      "coercion_losses": {},
+      "source_comparison": "Strict parse count and full typed-row hash sum match",
+      "typed_row_hash_sum": "6236171867690333110473597",
+      "stored": true
+    },
+    {
+      "table": "overall_officials",
+      "member": "overall_officials.txt",
+      "rows": 538952,
+      "columns": 5,
+      "new_fields": [],
+      "coercion_losses": {},
+      "source_comparison": "Strict parse count and full typed-row hash sum match",
+      "typed_row_hash_sum": "4970816126651840176305380",
+      "stored": true
+    },
+    {
+      "table": "participant_flows",
+      "member": "participant_flows.txt",
+      "rows": 81026,
+      "columns": 5,
+      "new_fields": [],
+      "coercion_losses": {},
+      "source_comparison": "Strict parse count and full typed-row hash sum match",
+      "typed_row_hash_sum": "747065110926220080452142",
+      "stored": true
+    },
+    {
+      "table": "pending_results",
+      "member": "pending_results.txt",
+      "rows": 34116,
+      "columns": 5,
+      "new_fields": [],
+      "coercion_losses": {},
+      "source_comparison": "Strict parse count and full typed-row hash sum match",
+      "typed_row_hash_sum": "315094259186451507731151",
+      "stored": true
+    },
+    {
+      "table": "provided_documents",
+      "member": "provided_documents.txt",
+      "rows": 88167,
+      "columns": 8,
+      "new_fields": [],
+      "coercion_losses": {},
+      "source_comparison": "Strict parse count and full typed-row hash sum match",
+      "typed_row_hash_sum": "813268069423822409267403",
+      "stored": true
+    },
+    {
+      "table": "reported_event_totals",
+      "member": "reported_event_totals.txt",
+      "rows": 612225,
+      "columns": 9,
+      "new_fields": [],
+      "coercion_losses": {},
+      "source_comparison": "Strict parse count and full typed-row hash sum match",
+      "typed_row_hash_sum": "5643104888163788054780576",
+      "stored": true
+    },
+    {
+      "table": "reported_events",
+      "member": "reported_events.txt",
+      "rows": 12253285,
+      "columns": 17,
+      "new_fields": [],
+      "coercion_losses": {},
+      "source_comparison": "Strict parse count and full typed-row hash sum match",
+      "typed_row_hash_sum": "113022698941805503593670651",
+      "stored": true
+    },
+    {
+      "table": "responsible_parties",
+      "member": "responsible_parties.txt",
+      "rows": 593336,
+      "columns": 8,
+      "new_fields": [],
+      "coercion_losses": {},
+      "source_comparison": "Strict parse count and full typed-row hash sum match",
+      "typed_row_hash_sum": "5476272293733320159306302",
+      "stored": true
+    },
+    {
+      "table": "result_agreements",
+      "member": "result_agreements.txt",
+      "rows": 81026,
+      "columns": 7,
+      "new_fields": [],
+      "coercion_losses": {},
+      "source_comparison": "Strict parse count and full typed-row hash sum match",
+      "typed_row_hash_sum": "747687408493016323880196",
+      "stored": true
+    },
+    {
+      "table": "result_contacts",
+      "member": "result_contacts.txt",
+      "rows": 81026,
+      "columns": 7,
+      "new_fields": [],
+      "coercion_losses": {},
+      "source_comparison": "Strict parse count and full typed-row hash sum match",
+      "typed_row_hash_sum": "750943163290615123176741",
+      "stored": true
+    },
+    {
+      "table": "result_groups",
+      "member": "result_groups.txt",
+      "rows": 2249303,
+      "columns": 7,
+      "new_fields": [],
+      "coercion_losses": {},
+      "source_comparison": "Strict parse count and full typed-row hash sum match",
+      "typed_row_hash_sum": "20741888087914969465816677",
+      "stored": true
+    },
+    {
+      "table": "retractions",
+      "member": "retractions.txt",
+      "rows": 335,
+      "columns": 5,
+      "new_fields": [],
+      "coercion_losses": {},
+      "source_comparison": "Strict parse count and full typed-row hash sum match",
+      "typed_row_hash_sum": "3236226654713576888087",
+      "stored": true
+    },
+    {
+      "table": "search_results",
+      "member": "search_results.txt",
+      "rows": 0,
+      "columns": 7,
+      "new_fields": [
+        "created_at",
+        "grouping",
+        "id",
+        "name",
+        "nct_id",
+        "study_search_id",
+        "updated_at"
+      ],
+      "coercion_losses": {},
+      "source_comparison": "Strict parse count and full typed-row hash sum match",
+      "typed_row_hash_sum": "None",
+      "stored": false
+    },
+    {
+      "table": "search_term_results",
+      "member": "search_term_results.txt",
+      "rows": 520437,
+      "columns": 5,
+      "new_fields": [],
+      "coercion_losses": {},
+      "source_comparison": "Strict parse count and full typed-row hash sum match",
+      "typed_row_hash_sum": "4801679424018962389818943",
+      "stored": true
+    },
+    {
+      "table": "search_terms",
+      "member": "search_terms.txt",
+      "rows": 186,
+      "columns": 5,
+      "new_fields": [],
+      "coercion_losses": {},
+      "source_comparison": "Strict parse count and full typed-row hash sum match",
+      "typed_row_hash_sum": "1807184687559851530811",
+      "stored": true
+    },
+    {
+      "table": "sponsors",
+      "member": "sponsors.txt",
+      "rows": 974504,
+      "columns": 5,
+      "new_fields": [],
+      "coercion_losses": {},
+      "source_comparison": "Strict parse count and full typed-row hash sum match",
+      "typed_row_hash_sum": "8985087208547391738610904",
+      "stored": true
+    },
+    {
+      "table": "studies",
+      "member": "studies.txt",
+      "rows": 611764,
+      "columns": 71,
+      "new_fields": [],
+      "coercion_losses": {},
+      "source_comparison": "Strict parse count and full typed-row hash sum match",
+      "typed_row_hash_sum": "5638709342504699020633660",
+      "stored": true
+    },
+    {
+      "table": "study_references",
+      "member": "study_references.txt",
+      "rows": 1158770,
+      "columns": 5,
+      "new_fields": [],
+      "coercion_losses": {},
+      "source_comparison": "Strict parse count and full typed-row hash sum match",
+      "typed_row_hash_sum": "10685669543857530318001793",
+      "stored": true
+    }
+  ],
+  "validation": "passed",
+  "type_changes": [
+    {
+      "table": "milestones",
+      "column": "count_units",
+      "from": "BIGINT",
+      "to": "VARCHAR",
+      "reason": "Preserve nonempty source text that does not parse under the prior inferred numeric type."
+    },
+    {
+      "table": "outcome_analyses",
+      "column": "ci_lower_limit_raw",
+      "from": "DOUBLE",
+      "to": "VARCHAR",
+      "reason": "Preserve nonempty source text that does not parse under the prior inferred numeric type."
+    }
+  ],
+  "rows": 59949300,
+  "table_count": 48,
+  "studies": 611764,
+  "artifact": {
+    "bytes": 6300119040,
+    "sha256": "c69dab5cd5b18b818714dce6c1227dc2d48bd491c624d0639f8811e057bd9c2b"
+  }
+}
